@@ -1,25 +1,40 @@
+import { NavLink } from 'react-router-dom';
+
 export default function Navbar() {
 	return (
 		<nav className='navbar'>
-			<a href='/' className='nav-brand'>
-				SuperM
-			</a>
+			<NavLink to='/' className='nav-brand'>
+				Simple Store
+			</NavLink>
 			<ul>
 				<li className='nav-item'>
-					<a className='active' href='/'>
+					<NavLink
+						className={({ isActive }) => (isActive ? 'active' : '')}
+						to='/'
+					>
 						Home
-					</a>
+					</NavLink>
 				</li>
 				<li className='nav-item'>
-					<a href='/about'>About us</a>
+					<NavLink
+						className={({ isActive }) => (isActive ? 'active' : '')}
+						to='/about'
+					>
+						About us
+					</NavLink>
 				</li>
 				<li className='nav-item'>
-					<a href='/products'>Products</a>
+					<NavLink
+						className={({ isActive }) => (isActive ? 'active' : '')}
+						to='/products'
+					>
+						Products
+					</NavLink>
 				</li>
 				<li>
-					<a href='/cart' className='nav-item nav-cart btn btn-accent'>
+					<NavLink to='/cart' className='nav-item nav-cart btn btn-accent'>
 						Cart (0)
-					</a>
+					</NavLink>
 				</li>
 			</ul>
 		</nav>
