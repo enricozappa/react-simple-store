@@ -1,16 +1,20 @@
 import { useState, useEffect } from 'react';
 import Product from './Product.jsx';
 import useFetch from './useFetch.jsx';
+import Loader from './Loader.jsx';
 
 export default function Products(props) {
 	const [products, setProducts] = useState([]);
+	const [isLoading, setLoading] = useState(false);
 	const { get } = useFetch(
 		'https://simple-store-database-default-rtdb.europe-west1.firebasedatabase.app/'
 	);
 
 	useEffect(() => {
+		setLoading(true);
 		get('products.json')
 			.then((data) => {
+				setLoading(false);
 				setProducts(data);
 			})
 			.catch((error) => console.log('Could not load products', error));
@@ -21,6 +25,7 @@ export default function Products(props) {
 			<h1>Products</h1>
 			<p>Take a look at our products</p>
 			<div className='products-grid'>
+				{isLoading && <Loader />}
 				{products.map((product) => {
 					return <Product key={product.id} details={product} />;
 				})}
