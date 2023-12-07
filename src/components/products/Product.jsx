@@ -1,4 +1,4 @@
-import Button from './Button.jsx';
+import Button from '../UI/Button.jsx';
 
 export default function Product(props) {
 	const { details } = props;
