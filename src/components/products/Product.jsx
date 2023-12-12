@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import Button from '../UI/Button.jsx';
 
 export default function Product(props) {
-	const { details } = props;
+	const { details, onProductAdd, onProductDelete } = props;
 
 	return (
 		<div className='product'>
@@ -26,11 +26,17 @@ export default function Product(props) {
 			</div>
 			<div className='product-checkout'>
 				<div>
-					<Button outline className='product-delete'>
+					<Button
+						outline
+						className='product-delete'
+						onClick={() => onProductDelete(details.id)}
+					>
 						x
 					</Button>
 				</div>
-				<Button outline>€{details.price}</Button>
+				<Button outline onClick={() => onProductAdd(details)}>
+					€{details.price}
+				</Button>
 			</div>
 		</div>
 	);

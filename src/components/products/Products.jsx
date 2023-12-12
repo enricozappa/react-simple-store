@@ -8,6 +8,7 @@ export default function Products(props) {
 	const { get, loading } = useFetch(
 		'https://simple-store-database-default-rtdb.europe-west1.firebasedatabase.app/'
 	);
+	const { cart, onProductAdd, onProductDelete } = props;
 
 	useEffect(() => {
 		get('products.json')
@@ -24,7 +25,15 @@ export default function Products(props) {
 			<div className='products-grid'>
 				{loading && <Loader />}
 				{products.map((product) => {
-					return <Product key={product.id} details={product} />;
+					return (
+						<Product
+							key={product.id}
+							details={product}
+							cart={cart}
+							onProductAdd={onProductAdd}
+							onProductDelete={onProductDelete}
+						/>
+					);
 				})}
 			</div>
 		</div>
