@@ -11,10 +11,22 @@ import ProductDetailNutrition from './components/products/ProductDetailNutrition
 import ProductDetailStorage from './components/products/ProductDetailStorage.jsx';
 
 function App() {
-	const [cart, setCart] = useState([]);
+	const [cart, setCart] = useState(() => {
+		let savedCart = [];
+
+		try {
+			savedCart = JSON.parse(localStorage.getItem('cart')) || [];
+		} catch (error) {
+			savedCart = [];
+		}
+
+		return savedCart;
+	});
 
 	useEffect(() => {
-		console.log(cart);
+		if (cart) {
+			localStorage.setItem('cart', JSON.stringify(cart));
+		}
 	}, [cart]);
 
 	function handleProductAdd(newProduct) {
