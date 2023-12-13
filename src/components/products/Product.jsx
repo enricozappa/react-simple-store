@@ -2,7 +2,9 @@ import { Link } from 'react-router-dom';
 import Button from '../UI/Button.jsx';
 
 export default function Product(props) {
-	const { details, onProductAdd, onProductDelete } = props;
+	const { details, onProductAdd, onProductDelete, cart } = props;
+	const existingProduct = cart.find((cartItem) => cartItem.id === details.id);
+	const quantity = existingProduct ? existingProduct.quantity : 0;
 
 	return (
 		<div className='product'>
@@ -16,9 +18,11 @@ export default function Product(props) {
 						alt={details.name}
 					/>
 				</Link>
-				<div className='product-quantity-container'>
-					<div className='product-quantity'>0</div>
-				</div>
+				{quantity > 0 && (
+					<div className='product-quantity-container'>
+						<div className='product-quantity'>{quantity}</div>
+					</div>
+				)}
 			</div>
 			<div className='product-info'>
 				<h3>{details.name}</h3>
@@ -26,13 +30,15 @@ export default function Product(props) {
 			</div>
 			<div className='product-checkout'>
 				<div>
-					<Button
-						outline
-						className='product-delete'
-						onClick={() => onProductDelete(details.id)}
-					>
-						x
-					</Button>
+					{quantity > 0 && (
+						<Button
+							outline
+							onClick={() => props.onProductDelete(details.id)}
+							className='product-delete'
+						>
+							&times;
+						</Button>
+					)}
 				</div>
 				<Button outline onClick={() => onProductAdd(details)}>
 					€{details.price}
