@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useParams, Outlet } from 'react-router-dom';
+import { NavLink, useParams, Outlet, Link } from 'react-router-dom';
 import useFetch from '../helpers/useFetch.jsx';
 
 export default function ProductDetails(props) {
@@ -62,6 +62,9 @@ export default function ProductDetails(props) {
 
 				<Outlet context={product} />
 			</div>
+			<Link to='/products' className='btn btn-default'>
+				&larr; Go back
+			</Link>
 		</div>
 	);
 }
