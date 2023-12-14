@@ -1,10 +1,18 @@
+import { useState } from 'react';
+import Button from './UI/Button.jsx';
 import Input from './UI/Input.jsx';
 
 export default function Cart(props) {
 	const { cart } = props;
+	const [email, setEmail] = useState('');
+
 	const totalCartPrice = cart.reduce((total, cartItem) => {
 		return total + cartItem.price * cartItem.quantity;
 	}, 0);
+
+	function handleFormSubmit(event) {
+		event.preventDefault();
+	}
 
 	return (
 		<div className='cart-layout'>
@@ -46,6 +54,22 @@ export default function Cart(props) {
 							</tr>
 						</tfoot>
 					</table>
+
+					<form className='pay-form' onSubmit={handleFormSubmit}>
+						<p>
+							Enter your email and then click on pay and your products will be
+							delivered to you!
+						</p>
+						<Input
+							required
+							autoComplete='email'
+							placeholder='Email'
+							type='email'
+							value={email}
+							onInput={(event) => setEmail(event.target.value)}
+						/>
+						<Button type='submit'>Pay</Button>
+					</form>
 				</>
 			)}
 
