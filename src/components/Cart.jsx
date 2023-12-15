@@ -1,17 +1,49 @@
 import { useState } from 'react';
 import Button from './UI/Button.jsx';
 import Input from './UI/Input.jsx';
+import { loadStripe } from '@stripe/stripe-js';
+
+// Initialize stripe with a test API key
+const stripeLoadedPromise = loadStripe(
+	'pk_test_51OEonqBafvVzdiY4P8QTwuxFpe7KsDwjZRSwSV0hkp9LlqkEU5K1iUb99oknqODkHncgXOq6LQQsycvD5cDzsRFt00PWgjtfjn'
+);
 
 export default function Cart(props) {
 	const { cart } = props;
 	const [email, setEmail] = useState('');
-
 	const totalCartPrice = cart.reduce((total, cartItem) => {
 		return total + cartItem.price * cartItem.quantity;
 	}, 0);
 
 	function handleFormSubmit(event) {
 		event.preventDefault();
+
+		// Cycle through cart items to generate checkout stripe array
+		const stripeLineItems = cart.map((cartItem) => {
+			return {
+				price: cartItem.price_id,
+				quantity: cartItem.quantity,
+			};
+		});
+
+		stripeLoadedPromise.then((stripe) => {
+			stripe
+				.redirectToCheckout({
+					lineItems: stripeLineItems,
+					mode: 'payment',
+					successUrl: 'https://simple-react-store-77c11.web.app',
+					cancelUrl: 'https://simple-react-store-77c11.web.app',
+					customerEmail: email,
+				})
+				.then((response) => {
+					// Log error if redirect did not work
+					console.error(response.error);
+				})
+				.catch((error) => {
+					// Log error if API key is wrong
+					console.error(error);
+				});
+		});
 	}
 
 	return (
