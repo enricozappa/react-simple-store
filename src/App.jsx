@@ -27,6 +27,15 @@ function App() {
 		if (cart) {
 			localStorage.setItem('cart', JSON.stringify(cart));
 		}
+
+		// Check for 'paymentSuccess' parameter on URL
+		const urlParams = new URLSearchParams(window.location.search);
+		const paymentSuccess = urlParams.get('paymentSuccess');
+
+		// Empty cart after successful payment
+		if (paymentSuccess === 'true') {
+			setCart([]);
+		}
 	}, [cart]);
 
 	function handleProductAdd(newProduct) {

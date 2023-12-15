@@ -31,7 +31,8 @@ export default function Cart(props) {
 				.redirectToCheckout({
 					lineItems: stripeLineItems,
 					mode: 'payment',
-					successUrl: 'https://simple-react-store-77c11.web.app',
+					successUrl:
+						'https://simple-react-store-77c11.web.app?paymentSuccess=true',
 					cancelUrl: 'https://simple-react-store-77c11.web.app',
 					customerEmail: email,
 				})
