@@ -205,6 +205,11 @@ input:focus {
 	justify-content: space-between;
 }
 
+.navbar-controls {
+	display: flex;
+	align-items: center;
+}
+
 .nav-brand {
 	font-size: 40px;
 	font-weight: 450;
@@ -458,6 +463,58 @@ input:focus {
 	padding-top: 30px;
 }
 
+/* The switch - the box around the slider */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* The slider */
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	transition: 0.4s;
+	border-radius: 24px;
+}
+
+.slider:before {
+	position: absolute;
+	content: '';
+	height: 20px;
+	width: 20px;
+	left: 2px;
+	bottom: 2px;
+	background-color: white;
+	transition: 0.4s;
+	border-radius: 50%;
+}
+
+input:checked + .slider {
+	background-color: #2196f3;
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+	transform: translateX(16px);
+}
+
 @media (max-width: 700px) {
 	.home-layout,
 	.about-layout,
@@ -465,8 +522,24 @@ input:focus {
 	.product-details-layout {
 		grid-template-columns: 1fr;
 	}
+
 	.home-image {
 		order: -1;
+	}
+
+	.navbar ul {
+		padding: 0;
+	}
+
+	.navbar-controls {
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.switch {
+		position: absolute;
+		right: 10px;
+		top: 10px;
 	}
 }
 
