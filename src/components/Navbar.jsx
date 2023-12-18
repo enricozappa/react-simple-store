@@ -14,7 +14,6 @@ export default function Navbar(props) {
 				Simple Store
 			</NavLink>
 			<div className='navbar-controls'>
-				<Switch />
 				<ul>
 					<li className='nav-item'>
 						<NavLink
