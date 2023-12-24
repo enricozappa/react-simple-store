@@ -11,7 +11,7 @@ export default function Navbar(props) {
 	return (
 		<nav className='navbar'>
 			<NavLink to='/' className='nav-brand'>
-				Simple Store
+				Simple Store Demo
 			</NavLink>
 			<div className='navbar-controls'>
 				<ul>

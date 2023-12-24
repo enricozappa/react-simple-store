@@ -6,8 +6,8 @@ export default function Home() {
 			<div>
 				<h1>Online shopping simplified</h1>
 				<p>
-					Order your groceries from <em>Simple Store</em> with our easy to use
-					app, and get your products delivered straight to your doorstep.
+					Order your groceries from <em>Simple Store Demo</em> with our easy to
+					use app, and get your products delivered straight to your doorstep.
 				</p>
 				<Link to='/products' className='btn btn-default'>
 					Start shopping

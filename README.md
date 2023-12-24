@@ -1,6 +1,6 @@
 # react-simple-store
 
-A simple store created in React 18 for educational purposes
+A simple demo store created in React 18 for educational purposes, especially to learn hierarchy between components and rounting
 
 link: https://simple-react-store-77c11.web.app/
 

@@ -78,7 +78,7 @@ a:hover {
 
 /* BUTTONS */
 .btn {
-	border-radius: 3px;
+	border-radius: 10px;
 	display: inline-block;
 	cursor: pointer;
 	font-size: 14px;
@@ -211,7 +211,7 @@ input:focus {
 }
 
 .nav-brand {
-	font-size: 40px;
+	font-size: 30px;
 	font-weight: 450;
 	text-decoration: none;
 	padding-left: 20px;
@@ -383,10 +383,10 @@ input:focus {
 	transition: transform 180ms ease-out;
 }
 .product:nth-child(2n):hover .product-image {
-	transform: scale(1.01) rotateZ(2deg);
+	transform: scale(1.01) rotateZ(5deg);
 }
 .product:nth-child(2n + 1):hover .product-image {
-	transform: scale(1.01) rotateZ(-2deg);
+	transform: scale(1.01) rotateZ(-5deg);
 }
 
 .product h3,
@@ -441,12 +441,8 @@ input:focus {
 	text-align: center;
 }
 
-.table tbody tr:nth-child(2n) {
+.table tbody tr {
 	background-color: white;
-}
-
-.table tbody tr:nth-child(2n + 1) {
-	background-color: var(--neutral-5);
 }
 
 .th-product {
