@@ -7,7 +7,7 @@ A simple demo store created in React 18 for educational purposes, especially to 
 - [Firebase Realtime Database](https://firebase.google.com/docs/database) - a NoSQL database used to store and fetch products
 - [Vite](https://vitejs.dev/) - A fast frontend build tool
 - [clsx](https://www.npmjs.com/package/clsx) - A tiny utility for constructing className strings conditionally
-- [Stripe API] - A set of tools for building and integrating online payment systems
+- [Stripe API](https://stripe.com/docs/api) - A set of tools for building and integrating online payment systems
 
 This project was developed following this [React tutorial](https://react-tutorial.app/) tutorial, making also some changes and personalizations.
 
